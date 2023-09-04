@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://mrwgqkubc7f8"]
+
+[ext_resource type="Texture2D" uid="uid://cc6i576jmgti7" path="res://assets/cars/Car_1_Main_Positions/Car_1_01.png" id="1_2g6rx"]
+[ext_resource type="Script" path="res://objects/car/car.gd" id="1_lqqwv"]
+[ext_resource type="Texture2D" uid="uid://dt2emm4006jn6" path="res://assets/cars/Car_1_Main_Positions/Car_1_02.png" id="2_2vhe7"]
+[ext_resource type="Texture2D" uid="uid://dr5l5x1o866p1" path="res://assets/cars/Car_1_Main_Positions/Car_1_03.png" id="3_ktmp6"]
+[ext_resource type="Texture2D" uid="uid://cgjhh114g06j0" path="res://assets/cars/Car_1_Main_Positions/Car_1_04.png" id="4_71rr3"]
+[ext_resource type="Texture2D" uid="uid://bud0glctvcrkf" path="res://assets/cars/Car_1_Main_Positions/Car_1_05.png" id="5_o8huk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2syfc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2g6rx")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2vhe7")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ktmp6")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_71rr3")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_o8huk")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k780k"]
+radius = 212.0
+height = 1102.0
+
+[node name="Car" type="CharacterBody2D"]
+script = ExtResource("1_lqqwv")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2syfc")
+animation = &"1"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.13, 0.13)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 20.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_vertical_offset = 0.01
+drag_left_margin = 0.21
+editor_draw_drag_margin = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_k780k")
